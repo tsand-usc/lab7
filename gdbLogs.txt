@@ -1,0 +1,549 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) r
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400a39 in factorial (
+    n=<error reading variable: Cannot access memory at address 0x7fffff7feffc>)
+    at brokengdb1.cpp:19
+19	{
+(gdb) break 22
+Breakpoint 1 at 0x400a42: file brokengdb1.cpp, line 22.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+4
+
+Breakpoint 1, factorial (n=4) at brokengdb1.cpp:22
+22	        return  factorial(n--)*n;
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) delete 22
+No breakpoint number 22.
+(gdb) delete 1
+(gdb) break 23
+Breakpoint 2 at 0x400a60: file brokengdb1.cpp, line 23.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400a39 in factorial (
+    n=<error reading variable: Cannot access memory at address 0x7fffff7feffc>)
+    at brokengdb1.cpp:19
+19	{
+(gdb) delete 2
+(gdb) break 22
+Breakpoint 3 at 0x400a42: file brokengdb1.cpp, line 22.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Breakpoint 3, factorial (n=3) at brokengdb1.cpp:22
+22	        return  factorial(n--)*n;
+(gdb) print n
+$1 = 3
+(gdb) bt
+#0  factorial (n=3) at brokengdb1.cpp:22
+#1  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) delete 3
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400a39 in factorial (
+    n=<error reading variable: Cannot access memory at address 0x7fffff7feffc>)
+    at brokengdb1.cpp:19
+19	{
+(gdb) backtrace
+#0  0x0000000000400a39 in factorial (
+    n=<error reading variable: Cannot access memory at address 0x7fffff7feffc>)
+    at brokengdb1.cpp:19
+#1  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#2  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#3  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#4  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#5  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#6  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#7  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#8  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#9  0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#10 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#11 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#12 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#13 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#14 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#15 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#16 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#17 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#18 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#19 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#20 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---
+#21 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#22 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#23 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#24 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#25 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#26 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#27 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#28 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#29 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#30 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#31 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#32 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#33 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#34 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#35 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#36 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#37 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#38 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#39 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#40 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#41 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#42 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#43 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---
+#44 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#45 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#46 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#47 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#48 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#49 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#50 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#51 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#52 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#53 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#54 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#55 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#56 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#57 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#58 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#59 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#60 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#61 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#62 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#63 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#64 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#65 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#66 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---
+#67 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#68 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#69 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#70 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#71 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#72 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#73 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#74 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#75 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#76 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#77 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#78 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#79 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#80 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#81 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#82 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#83 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#84 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#85 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#86 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#87 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#88 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#89 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---
+#90 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#91 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#92 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#93 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#94 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#95 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#96 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#97 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#98 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#99 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#100 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#101 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#102 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#103 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#104 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#105 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#106 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#107 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#108 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#109 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#110 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#111 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#112 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---
+#113 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#114 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#115 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#116 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#117 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#118 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#119 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#120 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#121 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#122 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#123 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#124 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#125 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#126 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#127 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#128 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#129 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#130 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#131 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#132 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#133 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#134 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+#135 0x0000000000400a52 in factorial (n=2) at brokengdb1.cpp:22
+---Type <return> to continue, or q <return> to quit---q
+Quit
+(gdb) print n
+Cannot access memory at address 0x7fffff7feffc
+(gdb) break 22
+Breakpoint 4 at 0x400a42: file brokengdb1.cpp, line 22.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Breakpoint 4, factorial (n=3) at brokengdb1.cpp:22
+22	        return  factorial(n--)*n;
+(gdb) print n
+$2 = 3
+(gdb) c
+Continuing.
+
+Breakpoint 4, factorial (n=3) at brokengdb1.cpp:22
+22	        return  factorial(n--)*n;
+(gdb) print n
+$3 = 3
+(gdb) n
+
+Breakpoint 4, factorial (n=3) at brokengdb1.cpp:22
+22	        return  factorial(n--)*n;
+(gdb) print n
+$4 = 3
+(gdb) info
+"info" must be followed by the name of an info command.
+List of info subcommands:
+
+info address -- Describe where symbol SYM is stored
+info all-registers -- List of all registers and their contents
+info args -- Argument variables of current stack frame
+info auto-load -- Print current status of auto-loaded files
+info auto-load-scripts -- Print the list of automatically loaded Python scripts
+info auxv -- Display the inferior's auxiliary vector
+info bookmarks -- Status of user-settable bookmarks
+info breakpoints -- Status of specified breakpoints (all user-settable breakpoints if no argument)
+info checkpoints -- IDs of currently known checkpoints
+info classes -- All Objective-C classes
+info common -- Print out the values contained in a Fortran COMMON block
+info copying -- Conditions for redistributing copies of GDB
+info dcache -- Print information on the dcache performance
+info display -- Expressions to display when program stops
+info exceptions -- List all Ada exception names
+info extensions -- All filename extensions associated with a source language
+info files -- Names of targets and files being debugged
+info float -- Print the status of the floating point unit
+info frame -- All about selected stack frame
+info frame-filter -- List all registered Python frame-filters
+---Type <return> to continue, or q <return> to quit---q
+Quit
+(gdb) infor breakpoints
+Undefined command: "infor".  Try "help".
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+4       breakpoint     keep y   0x0000000000400a42 in factorial(int) 
+                                                   at brokengdb1.cpp:22
+	breakpoint already hit 3 times
+(gdb) break 18
+Breakpoint 5 at 0x400a3c: file brokengdb1.cpp, line 18.
+(gdb) c
+Continuing.
+
+Breakpoint 5, factorial (n=3) at brokengdb1.cpp:21
+21	    if(n)
+(gdb) print n
+$5 = 3
+(gdb) exit
+Undefined command: "exit".  Try "help".
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 3887] will be killed.
+
+Quit anyway? (y or n) y
+====================================================================================================================
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) r
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400a39 in factorial (
+    a=<error reading variable: Cannot access memory at address 0x7fffff7feffc>)
+    at brokengdb1.cpp:19
+19	{
+(gdb) break 22
+Breakpoint 1 at 0x400a42: file brokengdb1.cpp, line 22.
+(gdb) print a
+Cannot access memory at address 0x7fffff7feffc
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+3
+
+Breakpoint 1, factorial (a=3) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) print a
+$1 = 3
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=3) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) print a
+$2 = 3
+(gdb) backtrace
+#0  factorial (a=3) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#2  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=3) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) backtrace
+#0  factorial (a=3) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#2  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#3  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=3) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) print a
+$3 = 3
+(gdb) backtrace
+#0  factorial (a=3) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#2  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#3  0x0000000000400a52 in factorial (a=2) at brokengdb1.cpp:22
+#4  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 3966] will be killed.
+
+Quit anyway? (y or n) y
+================================================================================================================
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) break 22
+Breakpoint 1 at 0x400a42: file brokengdb1.cpp, line 22.
+(gdb) r
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+5
+
+Breakpoint 1, factorial (a=5) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) backtrace
+#0  factorial (a=5) at brokengdb1.cpp:22
+#1  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=5) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) backtrace
+#0  factorial (a=5) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#2  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) backtrace 
+#0  factorial (a=5) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#2  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=5) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) backtrace
+#0  factorial (a=5) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#2  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#3  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=5) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) backtrace
+#0  factorial (a=5) at brokengdb1.cpp:22
+#1  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#2  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#3  0x0000000000400a52 in factorial (a=4) at brokengdb1.cpp:22
+#4  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+4
+
+Breakpoint 1, factorial (a=4) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=4) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=4) at brokengdb1.cpp:22
+22	        return  factorial(a--)*a;
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 4035] will be killed.
+
+Quit anyway? (y or n) y
+==================================================================================================================
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) break 22
+Breakpoint 1 at 0x400a43: file brokengdb1.cpp, line 22.
+(gdb) r
+Starting program: /home/student/ee355/lab7/a.out 
+Please enter n:
+4
+
+Breakpoint 1, factorial (a=4) at brokengdb1.cpp:22
+22	        return  (a*factorial(--a));
+(gdb) backtrace
+#0  factorial (a=4) at brokengdb1.cpp:22
+#1  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=3) at brokengdb1.cpp:22
+22	        return  (a*factorial(--a));
+(gdb) backtrace
+#0  factorial (a=3) at brokengdb1.cpp:22
+#1  0x0000000000400a57 in factorial (a=3) at brokengdb1.cpp:22
+#2  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=2) at brokengdb1.cpp:22
+22	        return  (a*factorial(--a));
+(gdb) backtrace
+#0  factorial (a=2) at brokengdb1.cpp:22
+#1  0x0000000000400a57 in factorial (a=2) at brokengdb1.cpp:22
+#2  0x0000000000400a57 in factorial (a=3) at brokengdb1.cpp:22
+#3  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (a=1) at brokengdb1.cpp:22
+22	        return  (a*factorial(--a));
+(gdb) backtrace
+#0  factorial (a=1) at brokengdb1.cpp:22
+#1  0x0000000000400a57 in factorial (a=1) at brokengdb1.cpp:22
+#2  0x0000000000400a57 in factorial (a=2) at brokengdb1.cpp:22
+#3  0x0000000000400a57 in factorial (a=3) at brokengdb1.cpp:22
+#4  0x00000000004009e4 in main () at brokengdb1.cpp:12
+(gdb) c
+Continuing.
+n factorial is: 24
+[Inferior 1 (process 4080) exited normally]
+(gdb) c
+The program is not being run.
+(gdb) quit
+
