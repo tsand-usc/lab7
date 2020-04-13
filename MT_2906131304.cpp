@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <deque>
+#include <ctime>
 
 struct ingredient{ // hold info on a layer element
    
@@ -163,8 +164,15 @@ void Sequential::decode(std::string layerLine){
 using namespace std;
 
 int main(){
-
+   
+   clock_t timer;
+   timer = clock(); 
+   
    Sequential hamburger;                                       // create object
    hamburger.get_ing("input-Step3.txt", "MT_Step1_out.txt");   // get lines and print
+   
+   timer = clock() - timer;
+   float sec = float(timer)/CLOCKS_PER_SEC;  
+   cout << "Time Elapsed: " << sec <<  " secs" << endl;  
    return 0; 
 }
